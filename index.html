@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Beautiful Baby</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="lmj&apos;s blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Beautiful Baby">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Beautiful Baby">
+<meta property="og:description" content="lmj&apos;s blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Beautiful Baby">
+<meta name="twitter:description" content="lmj&apos;s blog">
+  
+    <link rel="alternate" href="/atom.xml" title="Beautiful Baby" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Beautiful Baby</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">lmj&#39;s blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-轮播" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/28/轮播/" class="article-date">
+  <time datetime="2017-11-28T15:20:58.875Z" itemprop="datePublished">2017-11-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/28/轮播/">原生js实现轮播</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##1.HTML轮播框架<br>利用HTML先构建出轮播的基本样式，首先是包裹轮播图的容器，在这里我将其class设置为carousel-wrapper.<br>然后再用这个容器去包含一个无序列表，列表里面的 li 中放置图片。结构基本完成。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;carousel-wrapper&quot;&gt;</span><br><span class="line">    &lt;ul class=&quot;carousel-list&quot;&gt;</span><br><span class="line">        &lt;li class=&quot;carousel-item&quot;&gt;</span><br><span class="line">            &lt;img src=&quot;img/1.png&quot; alt=&quot;&quot; class=&quot;img&quot;&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li class=&quot;carousel-item&quot;&gt;</span><br><span class="line">            &lt;img src=&quot;img/2.png&quot; alt=&quot;&quot; class=&quot;img&quot;&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li class=&quot;carousel-item&quot;&gt;</span><br><span class="line">            &lt;img src=&quot;img/3.png&quot; alt=&quot;&quot; class=&quot;img&quot;&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li class=&quot;carousel-item&quot;&gt;</span><br><span class="line">            &lt;img src=&quot;img/4.png&quot; alt=&quot;&quot; class=&quot;img&quot;&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>##2.CSS轮播样式<br>设置carousel-wrapper的样式，宽高以及居中,重点是position的设置，得理解absolute和relative的用处及区别。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.carousel-wrapper&#123;</span><br><span class="line">    width: 820px;</span><br><span class="line">    height: 512px;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">    padding: 0;</span><br><span class="line">    border: none;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.carousel-list&#123;</span><br><span class="line">    list-style: none;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.carousel-item&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>##3.JS实现轮播效果<br>首先我们能想到的第一点是得有一个定时器，此处用的为setInterval；然后，需要对 li 的z-index属性进行设置，循环的让图片的z-index值变为999。<br>但是实现过程中会发现存在两个问题，第一就是最上层图片其实是 ul 中的最后一个图片，第二个问题就是循环一遍之后，不动了。<br>针对以上两个问题，我们得有一个解决方法，对于第一个问题，只需在最开始时执行一次z-index代码（具体看代码，新手不知怎么总结语言）；对于第二个问题，我们先考虑到发生这种情况的原因—是因为循环一次之后所有图片的z-index全部变成了999，所以我们得找到一个解决方法—-reset方法（使imgList中所有项的z-index初始化为1）即可。<br>解决完这些情况之后，我还想实现鼠标进入轮播区域时就停止循环，出来时继续，这时我们就得给鼠标绑定mouseenter和mouseleave事件。<br>到这里，基本的轮播就算做完了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">    var imgList = document.getElementsByClassName(&apos;carousel-item&apos;)</span><br><span class="line">    var len = imgList.length</span><br><span class="line">    var now = 0</span><br><span class="line">    var carouselW = document.getElementsByClassName(&apos;carousel-wrapper&apos;)[0]</span><br><span class="line">    var timer = null</span><br><span class="line">    imgList[now].style.zIndex = &apos;999&apos;</span><br><span class="line">    now++</span><br><span class="line">    /**</span><br><span class="line">     * add方法，定义setInterval，使当前项的z-index变为999</span><br><span class="line">     */</span><br><span class="line">    var add = function()&#123;</span><br><span class="line">        timer = setInterval(function()&#123;</span><br><span class="line">            reset()</span><br><span class="line">            imgList[now].style.zIndex = &apos;999&apos;</span><br><span class="line">            now++</span><br><span class="line">            if(now &gt; 3)&#123;</span><br><span class="line">                now = 0</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,1000)</span><br><span class="line">    &#125;</span><br><span class="line">    add()</span><br><span class="line">    /**</span><br><span class="line">     * reset方法，使imgList中所有项的z-index初始化为1</span><br><span class="line">     */</span><br><span class="line">    var reset = function()&#123;</span><br><span class="line">        for(var i = 0;i &lt; len;i++)&#123;</span><br><span class="line">            imgList[i].style.zIndex = &apos;1&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // mouseenter qingchu timer</span><br><span class="line">    carouselW.addEventListener(&apos;mouseenter&apos;, function()&#123;</span><br><span class="line">        clearInterval(timer)</span><br><span class="line">    &#125;,false)</span><br><span class="line">    carouselW.addEventListener(&apos;mouseleave&apos;,function()&#123;</span><br><span class="line">            add()</span><br><span class="line">    &#125;,false)</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/28/轮播/" data-id="cjajrs3fa0000xcv00b27e258" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/28/hello-world/" class="article-date">
+  <time datetime="2017-11-28T15:11:06.256Z" itemprop="datePublished">2017-11-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/28/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/28/hello-world/" data-id="cjajrnuzc0000agv05ytqp9o6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Arkiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Siste innlegg</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/11/28/轮播/">原生js实现轮播</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/28/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Sophia Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
